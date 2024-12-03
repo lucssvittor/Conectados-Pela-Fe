@@ -712,7 +712,6 @@ input[type="radio"] {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
     position: relative;
     z-index: 1;
 }
