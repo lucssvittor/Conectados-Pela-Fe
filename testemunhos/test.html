@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testemunhos</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      background-color: #000000;
+      color: #ffffff;
+      margin: 0;
+    }
+    .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; 
+}
+
+.logo img {
+    height: 55px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 1.4em;
+    color: #f9a825 ;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+    h2 {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .testemunhos-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  
+    .testemunhos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+  
+    .testemunhos-grid div {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  
+    .testemunhos-grid div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+  
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-bottom: 15px;
+      padding: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    button:hover {
+      background-color: #0056b3;
+    }
+  
+    #auth-container {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+  
+    #login-btn,
+    #logout-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+  
+    #login-btn:hover,
+    #logout-btn:hover {
+      background-color: #218838;
+    }
+  
+    @media (min-width: 768px) {
+      .testemunhos-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+  
+      textarea {
+        height: 150px;
+      }
+  
+      button {
+        padding: 14px 30px;
+      }
+    }
+  
+    @media (min-width: 1024px) {
+      .testemunhos-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+
+  <section id="auth-container">
+    <div class="container">
+      <div class="logo">
+          <img src="../img/logo.png" alt="Logo">
+          <h1>CONECTADOS PELA FÉ</h1>
+      </div>
+    <button id="login-btn">Login com Google</button>
+    <button id="logout-btn" style="display: none;">Sair</button>
+  </section>
+
+  <section class="testemunhos-container">
+    <h2>Testemunhos Inspiradores</h2>
+    <form id="testemunho-form" style="display: none;">
+      <textarea id="testemunho-input" placeholder="Compartilhe seu testemunho..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="testemunhos-grid" class="testemunhos-grid"></div>
+  </section>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB41ZlbB-FmhiByfb8h9Gk3Uk-_lsys084",
+      authDomain: "conectados-pela-fe.firebaseapp.com",
+      databaseURL: "https://conectados-pela-fe-default-rtdb.firebaseio.com",
+      projectId: "conectados-pela-fe",
+      storageBucket: "conectados-pela-fe.appspot.com",
+      messagingSenderId: "604345344252",
+      appId: "1:604345344252:web:96756146f9792dba893779",
+      measurementId: "G-HMB40H89L1"
+    };
+  
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    const database = getDatabase(app);
+  
+
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const testemunhoForm = document.getElementById('testemunho-form');
+    const testemunhoInput = document.getElementById('testemunho-input');
+    const testemunhosGrid = document.getElementById('testemunhos-grid');
+
+    loginBtn.addEventListener('click', () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("Usuário logado:", result.user.displayName);
+          updateUI(true, result.user);
+        })
+        .catch((error) => {
+          console.error("Erro ao logar:", error.message);
+        });
+    });
+  
+
+    logoutBtn.addEventListener('click', () => {
+      signOut(auth)
+        .then(() => {
+          console.log("Usuário deslogado");
+          updateUI(false);
+        })
+        .catch((error) => {
+          console.error("Erro ao deslogar:", error.message);
+        });
+    });
+  
+ 
+    function updateUI(isLoggedIn, user = null) {
+      if (isLoggedIn) {
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+        testemunhoForm.style.display = 'block';
+      } else {
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+        testemunhoForm.style.display = 'none'; 
+      }
+    }
+  
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Usuário logado:", user.displayName);
+        updateUI(true, user);
+      } else {
+        console.log("Usuário deslogado");
+        updateUI(false);
+      }
+    });
+  
+
+    testemunhoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      const testemunhoText = testemunhoInput.value.trim();
+      if (testemunhoText) {
+        const testemunhoRef = ref(database, 'testemunhos');
+        push(testemunhoRef, {
+          text: testemunhoText,
+          user: auth.currentUser.displayName
+        });
+  
+        testemunhoInput.value = ''; 
+      }
+    });
+  
+ 
+    onValue(ref(database, 'testemunhos'), (snapshot) => {
+      testemunhosGrid.innerHTML = ''; 
+      snapshot.forEach((childSnapshot) => {
+        const testemunho = childSnapshot.val();
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p><strong>${testemunho.user}</strong> disse:</p>
+          <p>${testemunho.text}</p>
+        `;
+        testemunhosGrid.appendChild(div);
+      });
+    });
+  </script>

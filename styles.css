@@ -1,0 +1,1011 @@
+/* Espaçamento Global */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Container Geral */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Estilo para o cabeçalho */
+header {
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    position: fixed;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; 
+}
+
+.logo img {
+    height: 55px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 1.4em;
+    color: #f9a825 ;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Botão hambúrguer */
+.hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #f9a825;
+    margin-left: 155px;
+    cursor: pointer;
+}
+
+/* Menu oculto inicialmente */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+
+nav.open {
+    transform: translateX(0);
+    align-items: right;
+}
+
+/* Estilo das opções do menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-top: 100px; 
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f9a825;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f9a825; 
+}
+
+/* Fechar botão */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #f9a825;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Exibir botão hambúrguer apenas em telas pequenas */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+        
+    }
+
+    nav {
+        position: static;
+        transform: none;
+        background: transparent;
+        height: auto;
+        width: auto;
+        display: flex;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+    .close {
+        display: none;
+    }
+}
+
+/* Configuração do vídeo de fundo */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Atrás de tudo */
+}
+
+/* Camada de fundo preto transparente */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Preto semi-transparente */
+    z-index: 2; /* Acima do vídeo */
+}
+
+/* Banner principal */
+.banner {
+    position: relative;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Garante que nada ultrapasse os limites */
+}
+
+/* Conteúdo do banner */
+.container {
+    position: relative;
+    z-index: 3; /* Fica acima do vídeo e do overlay */
+    padding: 50px;
+    text-align: center;
+}
+
+/* Texto do banner */
+.banner h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.banner p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Botão de chamada para ação */
+.cta-button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    color: #121212;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #ffeb3b;
+    transform: scale(1.05);
+}
+
+
+
+section {
+    padding: 60px 0; 
+}
+
+
+
+@media (max-width: 768px) {
+
+    .banner {
+        width: 100vw; 
+        height: 100vh; 
+        background-size: cover; 
+        background-position: -280px;
+        background-repeat: no-repeat; 
+        }
+
+    .banner h2 {
+        font-size: 2em; 
+    }
+
+    .banner p {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        font-size: 1em;
+        padding: 8px 15px; 
+    }
+
+    
+}
+
+
+
+.sobre-section {
+    background-color: #000000;
+    color: #f5f5f5;
+    padding: 50px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sobre-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.sobre-imagem {
+    flex: 1 1 30%;
+    text-align: center;
+}
+
+.sobre-imagem img {
+    width: 320px;
+    height: 437px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #f9a825;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.sobre-texto {
+    flex: 1 1 65%;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.sobre-texto h3 {
+    margin-top: 0;
+    font-size: 2em;
+    color: #f9a825;
+}
+
+.sobre-texto p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sobre-texto ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sobre-texto li {
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #f9a825;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .sobre-conteudo {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sobre-imagem, .sobre-texto {
+        flex: 1 1 100%;
+    }
+
+    .sobre-texto {
+        font-size: 1em;
+    }
+}
+
+
+.milagres-section h2, 
+.conteudo-section h2,
+.quiz-section h2,
+.mapa-section h2,
+.frases-section h2,
+.comunidade-section h2,
+.recursos-section h2,
+.eventos-section h2 {
+    margin-bottom: 30px; /* Espaçamento entre o título e o conteúdo das seções */
+    text-align: center;
+    color: #f9a825;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Galeria de Milagres */
+.milagres-section {
+    padding: 70px 0;
+}
+
+.milagres-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #f9a825;
+}
+
+.galeria {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.milagre-item {
+    position: relative;
+    width: calc(25% - 20px); 
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 5px #f9a825; 
+}
+
+/* Responsividade - ajuste de layout para telas menores */
+@media (max-width: 1200px) {
+    .milagre-item {
+        width: calc(33.33% - 10px);
+    }
+}
+
+@media (max-width: 900px) {
+    .milagre-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .milagre-item {
+        width: calc(100% - 20px); 
+    }
+}
+
+
+
+/* Imagem dentro do item */
+.milagre-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.milagre-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay de conteúdo sobre a imagem */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    padding: 10px;
+    text-align: center;
+}
+
+.milagre-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Ajustes dos textos no overlay */
+.overlay h3 {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: #f9a825;
+}
+
+.overlay p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #fff;
+    padding: 0 10px; 
+}
+
+/* Botão dentro do overlay */
+.overlay .cta-button {
+    padding: 5px 10px;
+    background-color: #f9a825;
+    color: #121212;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.overlay .cta-button:hover {
+    background-color: #ffeb3b;
+    transform: scale(1.05);
+}
+
+
+/* Estilizando a seção de conteúdo */
+#conteudo {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Estilo para os vídeos */
+.media {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para os players de Spotify */
+.podcast {
+    margin-top: 40px;
+}
+
+.spotify-player {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.spotify-episode iframe {
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spotify-episode iframe:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Estilos para o quiz interativo */
+.quiz-section {
+    padding: 60px 0;
+    color: #e0e0e0;
+}
+
+.quiz-section h2 {
+    text-align: center;
+    color: #f9a825;
+    margin-bottom: 20px;
+}
+
+.quiz-section p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.quiz-question {
+    margin-bottom: 30px;
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.quiz-question h3 {
+    margin-bottom: 15px;
+}
+
+.quiz-question ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quiz-question ul li {
+    margin-bottom: 10px;
+}
+
+label {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    color: #121212;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: block;
+    margin: 30px auto;
+}
+
+.cta-button:hover {
+    background-color: #ffeb3b;
+}
+
+/* Resultado do quiz */
+#quiz-result {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+
+#quiz-result h3 {
+    color: #f9a825;
+}
+
+
+/* Estilos para o mapa interativo */
+.mapa-section {
+    padding: 60px 0;
+    color: #333;
+}
+
+.mapa-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#mapa {
+    height: 500px;
+    width: 100%;
+}
+
+
+
+/* Frases Inspiradoras */
+.frases-section {
+    padding: 60px 0;
+    text-align: center;
+    color: #f9a825;
+}
+
+.frases-section h2 {
+    margin-bottom: 40px;
+    font-size: 3em;
+    color: #f9a825;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.frases-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    justify-items: center;
+}
+
+.frase-card {
+    background-color: #000000;
+    padding: 20px;
+    box-shadow: 0 5px 0px #f9a825;
+    border-radius: 10px;
+    font-size: 1.2em;
+    color: #f9a825;
+    max-width: 350px;
+    text-align: left;
+}
+
+.frase-card p {
+    font-style: italic;
+    color: #ffffff;
+}
+
+.frase-card strong {
+    display: inline-block; 
+    font-weight: bold;
+    color: #f9a825;
+    margin-left: 5px; 
+
+}
+
+/* Responsividade */
+@media (max-width: 1024px) { 
+    .frases-cards {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .frases-section h2 {
+        font-size: 2.5em; 
+    }
+}
+
+@media (max-width: 768px) { 
+    .frases-cards {
+        grid-template-columns: 1fr; 
+    }
+
+    .frases-section h2 {
+        font-size: 2em; 
+    }
+
+    .frase-card {
+        font-size: 1em; 
+    }
+}
+
+@media (max-width: 480px) { 
+    .frases-section {
+        padding: 40px 10px;
+    }
+
+    .frase-card {
+        padding: 15px; 
+    }
+}
+
+/* Estilos para a seção Comunidade Shalom */
+.comunidade-section {
+    height: 50vh;
+    color: #ffffff;
+    text-align: center;
+    background-image: url('https://comshalom.org/wp-content/uploads/2019/07/WhatsApp-Image-2019-07-09-at-9.40.14-AM.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    position: relative;
+    z-index: 1;
+}
+
+/* Adicionando um overlay de fundo para melhorar a legibilidade */
+.comunidade-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: -1;
+}
+
+.comunidade-section h2 {
+    font-size: 2.5em;
+    color: #f9a825;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.comunidade-section p {
+    font-size: 1.2em;
+    color: #ffffff;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+/* Botão CTA */
+.cta-button {
+    display: inline-block;
+    background-color: #f9a825;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ffcc00;
+}
+
+/* Links sociais */
+.social-links {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.social-links p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 1.2em;
+    color: #f9a825;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffc972;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .comunidade-section h2 {
+        font-size: 2em;
+    }
+
+    .comunidade-section p {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .social-links a {
+        font-size: 1em;
+    }
+
+}
+
+.social-icon.instagram::before {
+    content: "Instagram";
+}
+
+.social-icon.facebook::before {
+    content: "Facebook";
+}
+
+.social-icon.youtube::before {
+    content: "YouTube";
+}
+
+
+/* Estilos para a seção de Ebooks */
+.recursos-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.recursos-section h2 {
+    color: #f9a825;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+/* Ajuste na lista para maior responsividade */
+.recursos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    
+}
+
+.livro-capa {
+    width: 100%;
+    max-width: 250px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 10px 4px 0px #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Adiciona o efeito 3D quando o mouse passa por cima */
+.livro-capa:hover {
+    transform: perspective(1000px) rotateY(-15deg) scale(1.1);
+    box-shadow: 10px 4px 0px #fff;
+}
+
+
+.suggestion-box {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: space-between;
+    height: auto;
+    padding: 20px;
+    flex-wrap: wrap; 
+}
+
+.suggestion-box h1 {
+    color: #f9a825;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.left-side {
+    width: 40%;
+    text-align: center;
+    margin-bottom: 0; 
+}
+
+.profile-pic {
+    width: 100%;
+    height: auto;
+    max-height: 500px; 
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0; 
+}
+
+.right-side {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+textarea {
+    margin-top: 20px;
+    padding: 15px;
+    width: 80%;
+    height: 180px;
+    margin-bottom: 10px;
+    resize: vertical;
+    border-radius: 8px;
+    border: 2px solid #f9a825;
+    background-color: #000000;
+    color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+}
+
+button.cta-button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button.cta-button:hover {
+    background-color: #e68900;
+}
+
+@media (max-width: 768px) {
+    .suggestion-box {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .left-side {
+        width: 100%;
+        text-align: center;
+    }
+
+    .right-side {
+        width: 100%;
+    }
+
+    .profile-pic {
+        max-height: 600px;
+        margin-bottom: 5px; 
+    }
+
+    form textarea {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .suggestion-box h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px; 
+        }
+
+    .profile-pic {
+        max-height: 350px;
+        margin-bottom: 3px;
+    }
+
+    form textarea {
+        width: 90%;
+    }
+}
+
+
+/* Footer */
+footer {
+    background-color: #f9a825;
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+footer .redes-sociais a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+footer .redes-sociais a:hover {
+    color: #fff;
+}
+
