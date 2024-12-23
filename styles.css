@@ -52,12 +52,12 @@ header {
 
 /* Botão hambúrguer */
 .hamburger {
-    display: block;
+    display: flex;
     background: none;
     border: none;
     font-size: 1.8em;
     color: #f9a825;
-    margin-left: 155px;
+    justify-self: center;
     cursor: pointer;
 }
 
@@ -117,7 +117,7 @@ nav ul li a:hover {
 }
 
 /* Exibir botão hambúrguer apenas em telas pequenas */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .hamburger {
         display: none;
         
@@ -155,7 +155,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1; /* Atrás de tudo */
+    z-index: 1; 
 }
 
 /* Camada de fundo preto transparente */
@@ -349,7 +349,7 @@ h2 {
 .comunidade-section h2,
 .recursos-section h2,
 .eventos-section h2 {
-    margin-bottom: 30px; /* Espaçamento entre o título e o conteúdo das seções */
+    margin-bottom: 30px; 
     text-align: center;
     color: #f9a825;
 }
@@ -492,19 +492,64 @@ h2 {
 }
 
 /* Estilo para os vídeos */
+
 .media {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px; 
+    padding: 20px;
+}
+
+.video-item {
+    flex: 1 1 calc(33.33% - 20px); 
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2); 
 }
 
 .video-item iframe {
     width: 100%;
-    height: 300px;
+    height: 100%;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
+
+@media (max-width: 1024px) {
+
+    .video-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .media {
+        padding: 10px;
+    }
+
+    .video-item {
+        flex: 1 1 100%; 
+    }
+
+    .video-item iframe {
+        height: 200px; 
+    }
+}
+
+@media (max-width: 480px) {
+
+    .video-item iframe {
+        height: 180px; 
+    }
+}
+
 
 /* Estilo para os players de Spotify */
 .podcast {
@@ -604,7 +649,7 @@ input[type="radio"] {
 }
 
 
-/* Estilos para o mapa interativo */
+/* Estilos para o mapa */
 .mapa-section {
     padding: 60px 0;
     color: #333;
@@ -621,6 +666,27 @@ input[type="radio"] {
 }
 
 
+@media (max-width: 768px) {
+
+    .mapa-section {
+        padding: 40px 0;
+    }
+
+    #mapa {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .mapa-section {
+        padding: 30px 0;
+    }
+
+    #mapa {
+        height: 300px; 
+    }
+}
 
 /* Frases Inspiradoras */
 .frases-section {
@@ -712,6 +778,7 @@ input[type="radio"] {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; 
     position: relative;
     z-index: 1;
 }
@@ -984,32 +1051,36 @@ button.cta-button:hover {
     }
 }
 
-
-/* Footer */
-footer {
+/* Estilos do Footer */
+.footer {
     background-color: #f9a825;
-    padding: 30px 0;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-footer p {
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-footer a{
-    color: #000000;
+.footer-link {
     text-decoration: none;
-    font-size: medium;
-}
-
-footer .redes-sociais a {
     margin: 0 10px;
-    color: #fff;
-    font-size: 1.5em;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    color: #333;
+    margin-right: 2px; 
+    font-size: 40px;
 }
 
-footer .redes-sociais a:hover {
-    color: #fff;
+.footer-link:hover i {
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
 }
+
+
